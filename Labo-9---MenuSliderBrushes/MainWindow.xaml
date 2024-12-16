@@ -6,18 +6,34 @@
         xmlns:local="clr-namespace:Labo_9___MenuSliderBrushes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="0" Content="Eerste getal:"/>
-        <TextBox Grid.Column="1" Grid.Row="0" Name="numberOneTextBox" HorizontalAlignment="Left" Width="100"/>
-        <Label Grid.Column="0" Grid.Row="1" Content="Tweede getal:"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Name="numberTwoTextBox" HorizontalAlignment="Left" Width="100"/>
-    </Grid>
+    <DockPanel>
+        <Menu Name="Hoofdmenu" DockPanel.Dock="Top">
+            <MenuItem Header="Bestand">
+                <MenuItem Name="menuAfsluiten" Header="Afsluiten" Click="menuAfsluiten_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Getallen">
+                <MenuItem Name="menuGetal1" Header="getal 1" Click="menuGetal1_Click"></MenuItem>
+                <MenuItem Name="menuGetal2" Header="getal 2" Click="menuGetal2_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Label Name="timeLabel" Content="huidige tijd" DockPanel.Dock="Bottom" HorizontalAlignment="Right"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Eerste getal:"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Name="numberOneTextBox" TextChanged="numberOneTextBox_TextChanged" HorizontalAlignment="Left" Width="100"/>
+            <Slider x:Name="sliderGetal1" Grid.Column="2" Minimum="1" Maximum="5" IsSnapToTickEnabled="False" ValueChanged="sliderGetal1_ValueChanged" />
+            <Label Grid.Column="0" Grid.Row="1" Content="Tweede getal:"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Name="numberTwoTextBox" TextChanged="numberTwoTextBox_TextChanged" HorizontalAlignment="Left" Width="100"/>
+            <Slider x:Name="sliderGetal2"  Grid.Column="2" Grid.Row="1" Minimum="1" Maximum="5" TickFrequency="0.10" IsSnapToTickEnabled="true"  ValueChanged="sliderGetal2_ValueChanged"/>
+        </Grid>
+        
+    </DockPanel>
 </Window>
